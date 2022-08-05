@@ -1,12 +1,11 @@
 package garage;
 
-public class Vehicle {
+public abstract class Vehicle {
 	protected String numberPlate;
 	protected double fuelPer100Km;
 	
-	public Vehicle(String temp1,double temp2) {
+	public Vehicle(String temp1) {
 		numberPlate = temp1;
-		fuelPer100Km = temp2;
 	}
 	
 	
@@ -17,4 +16,6 @@ public class Vehicle {
 	public double getFuelPer100Km() {
 		return fuelPer100Km;
 	}
+	
+	public void calcFuelEconomy(double temp1) {}
 }

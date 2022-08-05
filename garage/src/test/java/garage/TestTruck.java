@@ -1,37 +1,49 @@
 package garage;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
-public class TestTruck {
+import junit.framework.Assert;
 
+@SuppressWarnings("deprecation")
+public class TestTruck {
+	
 	@Test
-	public void Truck_ReturnsValidFuelPer100Km() {
+	public void Turck_ReturnsValidNumberPlate() throws Exception {
+		TestVehicle.vehicle_ReturnsValidNumberPlate(new Truck("B5662BM",500,250));
+	}
+	
+	@Test
+	public void Truck_ReturnsValidFuelPer100Km() throws Exception {
 		Truck operator = new Truck("B5662BM",500,250);
 		
 		assertEquals(operator.getFuelPer100Km(),12.5,0);
 	}
 	
 	@Test
-	public void Truck_ReturnsValidMaxLoad() {
+	public void Truck_ReturnsValidMaxLoad() throws Exception {
 		Truck operator = new Truck("B5662BM",500,250);
 		
 		assertEquals(operator.getMaxLoad(),500,0);
 	}
 	
 	@Test
-	public void Truck_ReturnsValidCurrentLoad() {
+	public void Truck_ReturnsValidCurrentLoad() throws Exception {
 		Truck operator = new Truck("B5662BM",500,250);
 		
 		assertEquals(operator.getCurrentLoad(),250,0);
 	}
 	
 	@Test
-	public void Truck_DoesNotExceedMaxLoad() {
-		Truck operator = new Truck("B5662BM",500,600);
-		
-		assertEquals(operator.getCurrentLoad(),500,0);
+	public void Truck_DoesNotExceedMaxLoad() throws Exception {
+		try {
+			@SuppressWarnings("unused")
+			Truck operator = new Truck("B5662BM",500,600);
+		}
+		catch(Exception e){
+			return;
+		}
+		Assert.fail();
 	}
 
 }
